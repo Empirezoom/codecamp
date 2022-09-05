@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+:root{
+    --bg: white;
+    --icon: black;
+    --text: black;
+    --card: black;
+}
+.dark{
+    --bg: black;
+    --icon: white;
+    --text: white;
+    --card: black;
+}
+body{
+    background: var(--bg) !important;
+    color: var(--text) !important;
+}
+.osas{
+    margin-left: 3%;
+    cursor: pointer;
+}
+/* topbar */
+.auth{
+    display: flex !important;
+}
+.avat img{
+    border-radius: 100%;
+    width: 40px;
+    outline: 2px solid #7d3054;
+}
+.cont i{
+    color: #7d3054;
+}
+.authlist a{
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+}
+.authlist a:hover{
+    color: #7d3054;
+}
+/* topbar done*/
+/* navbar */
+.navbar{
+    background: blue;
+}
+.navbar-nav a{
+    color: white;
+    font-weight: 600;
+}
+.navbar-nav a:hover{
+    color: black;
+}
+.dropdown ul{
+    background: navy;
+}
+/* navbar done */
+
+/* carousel */
+.carouicon i{
+    font-size: 7vh;
+    color: black;
+}
+.carousel-indicators .active{
+    background-color: blue !important;
+}
+/* carousel done */
+
+/* content */
+.card{
+    outline: 2px solid navy;
+    box-shadow: 0 0 20px 0 navy;
+    transition: 1s;
+    border-radius: 2rem 0 !important;
+}
+.card-title{
+    font-weight: 600;
+    color: var(--card);
+}
+.card-text{
+    color: var(--card);
+}
+.card:hover{
+    transform: translateY(-30px);
+}
+.line{
+    border-bottom: 3px solid navy;
+}
+.card-body .btn{
+    background: navy;
+    border: none;
+}
+.card-body .btn:hover{
+    background:navy;
+    color: black;
+}
+.title::after{
+    content: '';
+    display: block;
+    width: 180px;
+    height: 3px;
+    background: navy;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pagination a{
+    color: navy;
+}
+.pagination li a:hover{
+    background: navy !important;
+    color: white;
+}
+/* content done */
+
+/* footer */
+.footer1{
+    background: gray;
+    padding: 3% 0;
+}
+.footer1 img{
+    margin-left: 10%;
+}
+.footbox2{
+    border-left: 1px solid white;
+}
+.footbox2 ul{
+    text-align: center;
+}
+.footbox2 ul li a{
+    text-decoration: none;
+    color: black;
+}
+.footbox3{
+    border-left: 1px solid white;
+}
+.footbox3 ul{
+    text-align: center;
+}
+.footbox3 ul li i{
+    color: navy;
+}
+/* footer done */
+
+/* banner */
+.banner{
+    background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url(../img/slider2.jpg);
+    height: 50vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+/* banner done */
+
+/* Detail */
+.phonedet{
+   margin-left: 10%;
+}
+.phonedet .detbtn:hover{
+    color: black !important;
+}
+.phonedet h5{
+    font-weight: bolder;
+    color: navy;
+}
+/* Detail done */
+
+/* Contact */
+.contbtn{
+    background: navy !important;
+    color: white !important;
+    width: 100px;
+}
+.contbtn:hover{
+    color: black !important;
+}
+.map{
+    margin-top: 15%;
+}
+/* Contact done */
+
+/* cart */
+.cart table{
+    width: 90%;
+    border: 1px solid navy !important; 
+}
+.cart thead{
+    background: navy;
+    text-align: center;
+}
+.cart th{
+    text-transform: capitalize;
+    color: white;
+}
+.cart tbody{
+    text-align: center;
+    /* border: 1px solid navy; */
+}
+.cart tbody td{
+    border: 1px solid navy;
+    color: black;
+    text-transform: capitalize;
+    font-weight: 800;
+}
+.carttotal p{
+    color: black;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.cartbtn{
+    background: navy !important;
+    color: white !important;
+}
+/* cart done */
+
+/* checkout */
+.ship{
+    border: 1px solid navy;
+    padding: 10px;
+}
+.cart p{
+    color: black;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: large;
+}
+/* checkout done */
+
+/* profile */
+.profavat{
+    padding-top: 5%;
+}
+.profavat img{
+    border-radius: 100%;
+    outline: 2px solid navy;
+}
+.uselink{
+    padding-top: 5%;
+}
+.uselink ul{
+    text-align: left;
+}
+.uselink li a{
+    text-decoration: none !important;
+    text-transform: capitalize;
+    color: black;
+}
+.uselink i{
+    color: navy;
+}
+/* profile done */
+
+/* callback */
+.callback p{
+    text-transform: capitalize;
+    color: navy;
+    margin-top: 5%;
+    font-size: 20px;
+}
+.callback span{
+    text-transform: capitalize;
+    color: goldenrod;
+    font-weight: 600;
+}
+/* callback done */
+
+/* signup */
+.signup form{
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    outline: 2px solid navy;
+    padding: 20px;
+    border-radius: 1rem;
+}
+.signup form input{
+    border-color: navy;
+}
+.signup form input:focus{
+    box-shadow: none;
+    border-color: navy;
+}
+.login i{
+    color: navy;
+}
+.pass{
+    position: relative;
+}
+.show{
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    cursor: pointer;
+}
+.show .bi-eye-fill{
+    display: none;
+}
+.show.hide .bi-eye-fill{
+    display: block;
+}
+.show.hide .bi-eye-slash-fill{
+    display: none;
+}
+/* signup done */
+
+@media (min-width: 768px) and (max-width: 1400px){
+
+}
+
+@media (max-width: 1400px){
+    .profavat img{
+        border-radius: 100%;
+        outline: 2px solid navy;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px){
+    .shipdet{
+        padding-top: 10%;
+    }
+    .profavat img{
+        border-radius: 100%;
+        outline: 2px solid navy;
+        height: 100px;
+        margin-left: 35%;
+    }
+    .signup form{
+        width: 80%;
+        margin-right: 10%;
+        margin-left: 10%;
+        outline: 2px solid navy;
+        padding: 20px;
+        border-radius: 1rem;
+    }
+}

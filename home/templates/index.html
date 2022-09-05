@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+{% block carousel %} {% include 'carousel.html' %} {% endblock carousel %}
+{% block content %} 
+<div class="container mt-5 mb-5">
+    <h1 class="text-center display-4 title">Featured Products</h1>
+    <div class="row text-center justify-content-center">
+      {% if featured %}
+        {% for item in featured %}
+        <div class="col-8 col-sm-8 col-md-6 col-lg-3 mt-5 mb-5">
+          <div class="card" style="height: 450px;">
+            <a href="{% url 'detail' item.id item.slug %}"><img src="{{item.pix.url}}" class="card-img-top mt-4" style="height: 200px;"></a>
+            <span class="line mt-3"></span>
+            <div class="card-body">
+              <h5 class="card-title">{{item.name}}</h5>
+              {% if item.discount_price %}
+                <span><del>₦{{item.price|floatformat:2|intcomma}}</del></span>
+                <p class="card-text">₦{{item.discount_price|floatformat:2|intcomma}}</p>
+                {% else %}
+                <p class="card-text">₦{{item.price|floatformat:2|intcomma}}</p>
+              {% endif %}
+              <form action="{% url 'addtocart' %}" method="POST"> 
+                {% csrf_token %}
+                <input type="hidden" name="quantity" value="1">
+                <input type="hidden" name="phoneid" value="{{item.id}}">
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <h1 class="text-center display-4 title">Best Selling Products</h1>
+    <div class="row text-center justify-content-center">
+      {% if bestselling %}
+        {% for item in bestselling %}
+        <div class="col-8 col-sm-8 col-md-6 col-lg-3 mt-5 mb-5">
+          <div class="card" style="height: 450px;">
+            <a href="{% url 'detail' item.id item.slug %}"><img src="{{item.pix.url}}" class="card-img-top mt-4" style="height: 200px;"></a>
+            <span class="line mt-3"></span>
+            <div class="card-body">
+              <h5 class="card-title">{{item.name}}</h5>
+              {% if item.discount_price %}
+                <span><del>₦{{item.price|floatformat:2|intcomma}}</del></span>
+                <p class="card-text">₦{{item.discount_price|floatformat:2|intcomma}}</p>
+                {% else %}
+                <p class="card-text">₦{{item.price|floatformat:2|intcomma}}</p>
+              {% endif %}
+              <form action="{% url 'addtocart' %}" method="POST"> 
+                {% csrf_token %}
+                <input type="hidden" name="quantity" value="1">
+                <input type="hidden" name="phoneid" value="{{item.id}}">
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <h1 class="text-center display-4 title">Latest Products</h1>
+    <div class="row text-center justify-content-center">
+      {% if latest %}
+        {% for item in latest %}
+        <div class="col-8 col-sm-8 col-md-6 col-lg-3 mt-5 mb-5">
+          <div class="card" style="height: 450px;">
+            <a href="{% url 'detail' item.id item.slug %}"><img src="{{item.pix.url}}" class="card-img-top mt-4" style="height: 200px;"></a>
+            <span class="line mt-3"></span>
+            <div class="card-body">
+              <h5 class="card-title">{{item.name}}</h5>
+              {% if item.discount_price %}
+                <span><del>₦{{item.price|floatformat:2|intcomma}}</del></span>
+                <p class="card-text">₦{{item.discount_price|floatformat:2|intcomma}}</p>
+                {% else %}
+                <p class="card-text">₦{{item.price|floatformat:2|intcomma}}</p>
+              {% endif %}
+              <form action="{% url 'addtocart' %}" method="POST"> 
+                {% csrf_token %}
+                <input type="hidden" name="quantity" value="1">
+                <input type="hidden" name="phoneid" value="{{item.id}}">
+                <button type="submit" class="btn btn-primary">Add to Cart</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

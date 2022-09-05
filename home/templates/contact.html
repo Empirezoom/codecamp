@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+{% block banner %} {% include 'banner.html' %} {% endblock banner %}
+{% block content %} 
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-8 col-lg-6">
+            <h1 class="text-center title">Contact Us</h1>
+            <form class="mt-5" action="{% url 'contact' %}" method="POST"> 
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                    <input type="text" name="first_name" class="form-control" id="exampleFormControlInput1" placeholder="Type in your first name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+                    <input type="text" name="last_name" class="form-control" id="exampleFormControlInput1" placeholder="Type in your last name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div>
+                    <button class="btn contbtn">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-8 col-lg-6">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.408225365133!2d3.3383859642667995!3d6.596079874146538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b92270e586183%3A0x8a62805c203e565b!2sComputer%20Village%2C%20Ikeja%20101233%2C%20Ikeja!5e0!3m2!1sen!2sng!4v1655979179819!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

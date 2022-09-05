@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+{% block banner %} {% include 'banner.html' %} {% endblock banner %}
+{% block content %} 
+<div class="container-fluid mt-5 mb-5">
+  <h1 class="text-center title">Order Confirmation</h1>
+  <div class="row">
+      <div class="col-12 col-md-4 col-lg-4 profavat">
+          <img style="height: 300px;" src="{{userprof.pix.url}}" alt="">
+      </div>
+      <div class="col-12 col-md-4 col-lg-4 callback">
+          <p>Hello <span>{{userprof.user|title}},</span> your order has been recieved and confirmed. one of our representative
+          will contact you shortly. thank you for your patronage.</p>
+      </div>
+      <div class="col-12 col-md-4 col-lg-4 uselink">
+          <h3 class="">Useful Links</h3>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'home' %}"><i class="bi bi-caret-right-fill"></i>home</a></li>
+            <li><a href="{% url 'profile' %}"><i class="bi bi-caret-right-fill"></i>profile</a></li>
+            <li><a href="{% url 'profile_update' %}"><i class="bi bi-caret-right-fill"></i>profile update</a></li> 
+            <li><a href="{% url 'password_update' %}"><i class="bi bi-caret-right-fill"></i>password update</a></li>
+        </ul>
+      </div>
+  </div>
+</div>
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

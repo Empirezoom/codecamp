@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+{% block banner %} {% include 'banner.html' %} {% endblock banner %}
+{% block content %} 
+<div class="container-fluid mt-5 mb-5">
+  <h1 class="text-center title">{{userprof.user|title}} Dashboard</h1>
+  <div class="row">
+      <div class="col-12 col-md-4 col-lg-4 profavat">
+          <img src="{{userprof.pix.url}}" alt="" style="height: 300px;"> 
+      </div>
+      <div class="col-12 col-md-4 col-lg-4">
+          <form class="mt-5 ship" action="">
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">First Name</label>
+                  <input type="text" value="{{userprof.first_name}}" class="form-control" id="exampleFormControlInput1" placeholder="Type in your first name">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+                  <input type="text" value="{{userprof.last_name}}" class="form-control" id="exampleFormControlInput1" placeholder="Type in your last name">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                  <input type="email" value="{{userprof.email}}" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Phone</label>
+                  <input type="text" value="{{userprof.phone}}" class="form-control" id="exampleFormControlInput1" placeholder="Type in your last name">
+              </div>
+              <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Address</label>
+                  <input type="text" value="{{userprof.address}}" class="form-control" id="exampleFormControlInput1" placeholder="Type in your last name">
+              </div>
+          </form>
+      </div>
+      <div class="col-12 col-md-4 col-lg-4 uselink">
+          <h3 class="">Useful Links</h3>
+          <ul class="list-unstyled">
+              <li><a href="{% url 'home' %}"><i class="bi bi-caret-right-fill"></i>home</a></li>
+              <li><a href="{% url 'profile' %}"><i class="bi bi-caret-right-fill"></i>profile</a></li>
+              <li><a href="{% url 'profile_update' %}"><i class="bi bi-caret-right-fill"></i>profile update</a></li> 
+              <li><a href="{% url 'password_update' %}"><i class="bi bi-caret-right-fill"></i>password update</a></li>
+          </ul>
+      </div>
+  </div>
+</div>
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

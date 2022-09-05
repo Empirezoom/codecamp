@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+{% block banner %} {% include 'banner.html' %} {% endblock banner %}
+{% block content %} 
+<div class="container">
+    <div class="card mb-5 mt-5">
+      <div class="row g-0 pt-5 pb-5 justify-content-center">
+        <div class="col-md-4">
+          <img src="{{phonedet.pix.url}}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body phonedet">
+            <h5 class="card-title pb-4">{{phonedet.name}}</h5>
+            <p class="card-text">Network: {{phonedet.network}}</p>
+            <p class="card-text">Launch: {{phonedet.launch}}</p>
+            <p class="card-text">Memory: {{phonedet.memory}}</p>
+            <p class="card-text">Camera: {{phonedet.camera}}</p>
+            {% if phonedet.discount_price %}
+            <p class="card-text">Price: ₦{{phonedet.discount_price|floatformat:2|intcomma}}</p>
+            {% else %}
+            <p class="card-text">Price: ₦{{phonedet.price|floatformat:2|intcomma}}</p>
+            {% endif %}
+            <form action="{% url 'addtocart' %}" method="POST"> 
+              {% csrf_token %}
+              <input type="hidden" name="quantity" value="1">
+              <input type="hidden" name="phoneid" value="{{phonedet.id}}">
+              <button type="submit" class="btn btn-primary">Buy Now</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

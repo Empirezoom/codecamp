@@ -1,0 +1,88 @@
+{% load static %}
+<!-- topbar -->
+<div class="container-fluid">
+    <div class="row mt-2 cont">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-6">
+            <ul class="list-inline">
+                <li class="list-inline-item"><span><i class="bi bi-telephone-fill"></i>+2348033459981</span></li>
+                <li class="list-inline-item"><span><i class="bi bi-envelope-fill"></i>info:matthew123224@gmail.com</span></li>
+            </ul>
+        </div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-6 auth">
+            <ul class="list-inline ms-auto authlist">
+              {% if user.is_authenticated %}
+                <li class="list-inline-item avat"><a href="{% url 'profile' %}">
+                  {% if user.customer %}
+                    <img src="{{user.customer.pix.url}}" alt=""></a>
+                  {% endif %}
+                </li> 
+                <li class="list-inline-item">
+                  {% if request.user %}
+                    Welcome<span> {{user.username}}!</span>
+                  {% endif %} 
+                </li>
+                <li class="list-inline-item"><a href="{% url 'profile' %}"><span>Profile</span></a></li>
+                <li class="list-inline-item"><a href="{% url 'cart' %}"><span><i class="bi bi-cart4"></i>Cart</span></a></li>
+                <li class="list-inline-item"><a href="{% url 'signout' %}"><span>Log out</span></a></li> 
+              {% else %}
+                <li class="list-inline-item"><a href="{% url 'signup' %}"><span>Signup</span></a></li>
+                <li class="list-inline-item"><a href="{% url 'signin' %}"><span>Log in</span></a></li>
+              {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- topbar done -->
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><img style="height: 30px;" src="{{cprofile.logo.url}}" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a> 
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}">Products</a> 
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Category
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  {% if category %}
+                    {% for item in category %}
+                      <li><a class="dropdown-item" href="{% url 'category' item.id %}">{{item.brand}}</a></li> 
+                    {% endfor %}
+                  {% endif %}
+                </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'about' %}">About</a> 
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+            </li>
+        </ul>
+        <div class="osas">
+          <i class="bi bi-moon-fill"></i>
+          <!-- <i class="bi bi-sun-fill"></i> -->
+        </div>
+      </div>
+    </div>
+</nav>
+<!-- navbar done -->
+
+<!-- pop up -->
+{% if messages %}
+  {% for item in messages %}
+  <div class="alert alert-success alert-dismissible fade show text-center mb-0" role="alert">
+    <strong>{{item}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+{% endif %}
+<!-- pop up done -->

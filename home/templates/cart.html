@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+{% block banner %} {% include 'banner.html' %} {% endblock banner %}
+{% block content %} 
+<div class="container mt-5 mb-5">
+  <h1 class="title text-center">Your Shop Cart</h1>
+  <div class="row">
+      <div class="col-12 mt-5 cart">
+          <table>
+              <thead>
+                  <tr>
+                      <th>action</th>
+                      <th>item</th>
+                      <th>brand</th>
+                      <th>quantity</th>
+                      <th>price</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% if cart %}
+                  {% for item in cart %}
+                  <tr>
+                    <form action="{% url 'delete' %}" method="POST">
+                      {% csrf_token %}
+                      <td>
+                        <input type="hidden" name="del_id" value="{{item.id}}">
+                        <button type="submit"><i class="bi bi-trash-fill"></i></button>
+                      </td>
+                    </form>
+                      <td><img style="height: 50px;" src="{{item.phone.pix.url}}" alt=""></td>
+                      <td>{{item.phone.name}}</td>
+                      <form action="{% url 'increase' %}" method="POST"> 
+                        {% csrf_token %}
+                        <td>
+                          <input type="hidden" name="quant_id" value="{{item.id}}">
+                          <input type="number" min="1" max="50" name="quant" value="{{item.qty}}">
+                          <button type="submit" class="btn btn-warning">Add</button>
+                        </td>
+                      </form>
+                      <td>₦{{item.amount|floatformat:2|intcomma}}</td>
+                  </tr>
+                  {% endfor %}
+                {% endif %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <div class="row mt-3">
+      <div class="col-12 carttotal">
+          <p>subtotal = ₦{{subtotal|floatformat:2|intcomma}}</p>
+          <p>VAT = ₦{{vat|floatformat:2|intcomma}}</p>
+          <p>total = ₦{{total|floatformat:2|intcomma}}</p>
+          <a href="{% url 'checkout' %}" class="btn cartbtn">Checkout</a> 
+      </div>
+  </div>
+</div>
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

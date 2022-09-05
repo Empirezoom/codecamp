@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+{% block banner %} {% include 'banner.html' %} {% endblock banner %}
+{% block content %} 
+<div class="container mt-5 mb-5">
+  <h1 class="text-center title">Register on Devcircle</h1>
+  <div class="row">
+      <div class="col-12 signup">
+          <form class="mt-5" action="{% url 'signup' %}" method="POST"> 
+              {% csrf_token %}
+              <div class="mb-3">
+                  <input type="text" name="username" class="form-control" id="exampleFormControlInput1" placeholder="Username">
+              </div>
+              <div class="mb-3">
+                  <input type="text" name="first_name" class="form-control" id="exampleFormControlInput1" placeholder="First Name">
+              </div>
+              <div class="mb-3">
+                  <input type="text" name="last_name" class="form-control" id="exampleFormControlInput1" placeholder="Last Name">
+              </div>
+              <div class="mb-3">
+                  <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="Email Address">
+              </div>
+              <div class="mb-3">
+                  <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" placeholder="Phone">
+              </div>
+              <div class="mb-3">
+                  <input type="text" name="address" class="form-control" id="exampleFormControlInput1" placeholder="Address">
+              </div>
+              <div class="mb-3">
+                  <input type="hidden" name="pix" value="customer/avatar.png" class="form-control" id="exampleFormControlInput1" placeholder="Pix">
+              </div>
+              <div class="mb-3">
+                  <input type="password" name="password1" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+              </div>
+              <div class="mb-3">
+                  <input type="password" name="password2" class="form-control" id="exampleFormControlInput1" placeholder="Confirm Password">
+              </div>
+              <div class="text-center">
+                  <button type="submit" class="btn contbtn">Register</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+{% endblock content %}
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
